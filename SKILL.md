@@ -25,6 +25,9 @@ Read only the files needed for the task:
 - `references/rn-cli-setup.md`: package manager, app IDs, native config, rebuilds.
 - `references/privacy-consent.md`: UMP, ATT, initialization ordering, test consent.
 - `references/ad-components.md`: RN TypeScript ad-unit config and ad components.
+- `references/monetization-strategy.md`: format choice, caps/floors, experiments, metrics.
+- `references/loading-lifecycle.md`: preload, state, reload, app-open, cooldown rules.
+- `references/mediation-native.md`: Android/iOS mediation and native config checks.
 - `references/policy-ux-checklist.md`: RN ad placement safety and policy review.
 - `references/store-release-checklist.md`: AdMob IDs, iOS privacy, release checks.
 - `references/troubleshooting.md`: no-fill, startup crashes, app ID, test-device issues.
@@ -32,6 +35,8 @@ Read only the files needed for the task:
 When the task touches native config, consent APIs, ATT, SKAdNetwork, or ad
 lifecycle behavior, verify current Invertase and Google docs before editing.
 Treat examples in references as implementation patterns, not permanent API truth.
+When the task touches revenue strategy, mediation, native partner setup, or
+debug evidence, load the matching reference first and keep claims measurable.
 
 ## Ownership
 
@@ -41,7 +46,11 @@ This skill owns:
 - `react-native-google-mobile-ads` setup for bare RN
 - root `app.json` `react-native-google-mobile-ads` config
 - consent and initialization sequencing before ad loading
+- monetization guidance for format selection, caps/floors, metrics, and tests
+- ad lifecycle guidance for preload, reload, app-open age, cooldown, and failure
 - RN-safe banner/interstitial/rewarded/app-open implementation patterns
+- mediation/native checks for Android, iOS, adapter freshness, and privacy disclosure
+- revenue/debugging evidence: ILRD, ResponseInfo, Ad Inspector, and release proof
 - local verification and troubleshooting
 
 Delegate:
@@ -59,9 +68,14 @@ Delegate:
   production project without explicit user approval.
 - Do not load ads before consent/request configuration and
   `mobileAds().initialize()` have completed or intentionally settled.
+- Do not claim any ad format has universal revenue superiority; require metrics,
+  experiments, and retention impact before revenue conclusions.
+- Do not paste static adapter matrices or platform ad-network ID lists; verify
+  current Google, partner, and Invertase docs when native/mediation details matter.
 - Use Google test IDs in development; never test with production units unless the
   device is registered as a test device.
-- Ad failures must not block the core app flow.
+- Ad failures, mediation gaps, or revenue debug failures must not block the core
+  app flow; capture evidence and degrade gracefully.
 
 ## Verification
 
