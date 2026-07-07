@@ -1,0 +1,4 @@
+interface:
+  display_name: "React Native AdMob CLI"
+  short_description: "Bare RN AdMob setup and UX checks"
+  default_prompt: "Use $react-native-admob-cli to integrate AdMob into my bare React Native CLI app safely."
